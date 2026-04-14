@@ -36,6 +36,78 @@
     --border: #dcc7a4;
 }
 
+/* Ember theme — dark mushroom cave. Warm candle-lit healing room:
+   deep earth backgrounds, glowing sage and terracotta accents,
+   cream text that feels like soft lamplight. */
+[data-theme="ember"] {
+    --sage: #a0bf9e;
+    --sage-light: #7a9a78;
+    --sage-pale: #2d3c31;
+    --cream: #282018;
+    --bone: #1e1811;
+    --clay: #d88c6a;
+    --clay-light: #3c2920;
+    --dusty-rose: #d99288;
+    --mushroom: #d0a98f;
+    --earth: #d4ad80;
+    --ink: #f0e0c6;
+    --muted: #b5a694;
+    --border: #3d3329;
+}
+
+/* Ember-specific overrides where a simple token swap isn't enough */
+[data-theme="ember"] body {
+    color: var(--ink);
+}
+
+[data-theme="ember"] p {
+    color: var(--muted);
+}
+
+[data-theme="ember"] .nav {
+    background: rgba(30, 24, 17, 0.9);
+}
+
+[data-theme="ember"] footer {
+    background: #0f0b06;
+}
+
+[data-theme="ember"] footer p {
+    color: var(--mushroom);
+}
+
+[data-theme="ember"] footer .brand-footer {
+    color: var(--earth);
+}
+
+[data-theme="ember"] .about-image {
+    color: var(--ink);
+}
+
+[data-theme="ember"] .card {
+    background: var(--cream);
+}
+
+[data-theme="ember"] .form-wrap,
+[data-theme="ember"] .form-field input,
+[data-theme="ember"] .form-field textarea,
+[data-theme="ember"] .form-field select {
+    background: var(--cream);
+    color: var(--ink);
+}
+
+[data-theme="ember"] .investment {
+    background: var(--cream);
+}
+
+[data-theme="ember"] .week {
+    background: var(--cream);
+}
+
+[data-theme="ember"] .btn {
+    color: var(--bone);
+}
+
 /* Smooth cross-theme transitions */
 body,
 .nav,
@@ -570,17 +642,28 @@ footer .brand-footer {
     background: linear-gradient(135deg, var(--clay), var(--sage));
 }
 
+[data-theme="ember"] .theme-toggle .dot {
+    background: radial-gradient(circle at 30% 30%, var(--clay), var(--mushroom));
+    box-shadow: 0 0 8px rgba(216, 140, 106, 0.4);
+}
+
 .theme-toggle .label-muted,
-.theme-toggle .label-vibrant {
+.theme-toggle .label-vibrant,
+.theme-toggle .label-ember {
     display: none;
 }
 
-[data-theme="muted"] .theme-toggle .label-vibrant,
-:root:not([data-theme="vibrant"]) .theme-toggle .label-vibrant {
+/* Each theme shows the NEXT theme's name as the toggle label */
+:root:not([data-theme]) .theme-toggle .label-vibrant,
+[data-theme="muted"] .theme-toggle .label-vibrant {
     display: inline;
 }
 
-[data-theme="vibrant"] .theme-toggle .label-muted {
+[data-theme="vibrant"] .theme-toggle .label-ember {
+    display: inline;
+}
+
+[data-theme="ember"] .theme-toggle .label-muted {
     display: inline;
 }
 
