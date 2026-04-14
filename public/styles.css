@@ -1,6 +1,8 @@
-/* Soul Deep Yoga Therapy — Minimal, muted, soulful */
+/* Soul Deep Yoga Therapy — Minimal, soulful */
 
-:root {
+/* Muted theme (default) — soft, quiet, tonal */
+:root,
+[data-theme="muted"] {
     --sage: #8a9a8b;
     --sage-light: #c7d0c5;
     --sage-pale: #e8ede6;
@@ -14,6 +16,42 @@
     --ink: #3a3832;
     --muted: #6b665c;
     --border: #e3ddd1;
+}
+
+/* Vibrant theme — same palette, turned up. Deeper greens, warmer
+   terracotta, richer cream — still earthy, but with more presence. */
+[data-theme="vibrant"] {
+    --sage: #4f7556;
+    --sage-light: #8eb090;
+    --sage-pale: #cfdfce;
+    --cream: #f5e7cd;
+    --bone: #fcf2dc;
+    --clay: #b9643f;
+    --clay-light: #eabd9d;
+    --dusty-rose: #d07762;
+    --mushroom: #8a5a43;
+    --earth: #4a3325;
+    --ink: #2a1d14;
+    --muted: #6d5642;
+    --border: #dcc7a4;
+}
+
+/* Smooth cross-theme transitions */
+body,
+.nav,
+section,
+.card,
+footer,
+.form-wrap,
+.week,
+.investment,
+.pull-quote,
+.contact-block,
+.page-intro,
+.hero,
+.about-image {
+    transition: background-color 0.4s ease, color 0.4s ease,
+                border-color 0.4s ease, background 0.4s ease;
 }
 
 * {
@@ -493,6 +531,57 @@ footer .brand-footer {
     font-size: 1.2rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
+}
+
+/* Theme toggle */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 400;
+    transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.theme-toggle:hover {
+    border-color: var(--sage);
+    color: var(--earth);
+}
+
+.theme-toggle .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sage), var(--clay));
+    display: inline-block;
+}
+
+[data-theme="vibrant"] .theme-toggle .dot {
+    background: linear-gradient(135deg, var(--clay), var(--sage));
+}
+
+.theme-toggle .label-muted,
+.theme-toggle .label-vibrant {
+    display: none;
+}
+
+[data-theme="muted"] .theme-toggle .label-vibrant,
+:root:not([data-theme="vibrant"]) .theme-toggle .label-vibrant {
+    display: inline;
+}
+
+[data-theme="vibrant"] .theme-toggle .label-muted {
+    display: inline;
 }
 
 /* Contact form specifics */

@@ -12,6 +12,13 @@
                     </a>
                 </li>
             <% }); %>
+            <li>
+                <button class="theme-toggle" type="button" onclick="(function(){var h=document.documentElement;var cur=h.getAttribute('data-theme')||'muted';var next=cur==='muted'?'vibrant':'muted';h.setAttribute('data-theme',next);try{localStorage.setItem('sd-theme',next);}catch(e){}})();" aria-label="Toggle theme">
+                    <span class="dot" aria-hidden="true"></span>
+                    <span class="label-vibrant">Vibrant</span>
+                    <span class="label-muted">Muted</span>
+                </button>
+            </li>
         </ul>
     </div>
 </nav>
