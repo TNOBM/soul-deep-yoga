@@ -1,0 +1,86 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+
+<div class="page-intro">
+    <div class="eyebrow">Let's Connect</div>
+    <h1>Begin with one intentional breath.</h1>
+    <p>
+        Whether you're curious, unsure, or ready to begin—I'd be honored to hear from you.
+        Reach out with a question, request a discovery call, or simply say hello.
+    </p>
+</div>
+
+<section>
+    <div class="container">
+        <div class="form-wrap">
+            <% if (typeof success !== 'undefined' && success) { %>
+                <div class="form-success">
+                    <div class="eyebrow-sm">Message Received</div>
+                    <h3>Thank you — your note is on its way.</h3>
+                    <p>I'll be in touch soon, with care and presence.</p>
+                    <a href="/" class="btn btn-outline">Return Home</a>
+                </div>
+            <% } else { %>
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div class="form-error"><%= error %></div>
+                <% } %>
+                <% const v = (typeof formValues !== 'undefined') ? formValues : {}; %>
+                <form method="POST" action="/contact">
+                    <div class="form-field">
+                        <label for="name">Your Name</label>
+                        <input id="name" name="name" type="text" value="<%= v.name || '' %>" required />
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" value="<%= v.email || '' %>" required />
+                    </div>
+                    <div class="form-field">
+                        <label for="interest">What brings you here?</label>
+                        <select id="interest" name="interest">
+                            <% const options = [
+                                'A free discovery call',
+                                'Yoga Therapy Assessment',
+                                'Private Yoga (Deep Release, Rest, Breath)',
+                                'The Mushroom Circle — 10 Week Program',
+                                'Mushroom Circle waitlist',
+                                'A general question'
+                            ]; %>
+                            <% options.forEach(function(opt) { %>
+                                <option <%= v.interest === opt ? 'selected' : '' %>><%= opt %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="message">A little about what you're moving through</label>
+                        <textarea id="message" name="message" placeholder="Share as much or as little as feels right…"><%= v.message || '' %></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<section class="bg-sage">
+    <div class="container narrow" style="text-align:center;">
+        <div class="section-heading">
+            <span class="eyebrow">Prefer Email?</span>
+            <h2>I read every message with care.</h2>
+        </div>
+        <a href="mailto:<%= site.email %>" class="email"><%= site.email %></a>
+        <p style="margin-top:1.5rem;">
+            All sessions are virtual at this time, which means we can work together from
+            wherever you are.
+        </p>
+    </div>
+</section>
+
+<section>
+    <div class="container narrow">
+        <div class="pull-quote">
+            "Your healing can be steady, powerful, and soul-deep."
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

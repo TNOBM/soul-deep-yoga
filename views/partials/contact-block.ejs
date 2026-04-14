@@ -1,0 +1,15 @@
+<section class="contact-block">
+    <div class="narrow">
+        <div class="section-heading">
+            <span class="eyebrow"><%= eyebrow || 'Ready to Begin?' %></span>
+            <h2><%= heading || 'Healing begins with one intentional step.' %></h2>
+        </div>
+        <% if (typeof body !== 'undefined' && body) { %>
+            <p><%= body %></p>
+        <% } %>
+        <a href="mailto:<%= site.email %>" class="email"><%= site.email %></a>
+        <div class="btn-row">
+            <a href="/contact" class="btn">Book a Discovery Call</a>
+        </div>
+    </div>
+</section>

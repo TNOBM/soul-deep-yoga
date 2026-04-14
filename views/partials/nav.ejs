@@ -1,0 +1,17 @@
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="/" class="brand">
+            <%= site.brand %>
+            <span><%= site.tagline %></span>
+        </a>
+        <ul class="nav-links">
+            <% site.nav.forEach(function(item) { %>
+                <li>
+                    <a href="<%= item.href %>" class="<%= active === item.key ? 'active' : '' %>">
+                        <%= item.label %>
+                    </a>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</nav>
