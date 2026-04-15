@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 265" fill="none">
+  <!--
+    Soul Deep Yoga Therapy — Logo mark
+    Hands holding a lotus with chakra column
+    Palette: muted tones drawn from site color variables
+  -->
+  <style>
+    .sketch { stroke: #6d5642; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .petal  { stroke: #6d5642; stroke-width: 0.65; fill: rgba(252,242,220,0.22); stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <!-- ═══ LOTUS ════════════════════════════════════════════════════════ -->
+  <!-- All petals rotate around the lotus base at (100, 152)            -->
+  <!-- Base petal: cx=100, cy=82, rx=10, ry=38  (tall, slim ellipse)   -->
+
+  <!-- Outer ring — 7 petals fanning from –65° to +65° -->
+  <ellipse class="petal" cx="100" cy="82" rx="10" ry="38" transform="rotate(-65 100 152)" />
+  <ellipse class="petal" cx="100" cy="82" rx="10" ry="38" transform="rotate(-43 100 152)" />
+  <ellipse class="petal" cx="100" cy="82" rx="10" ry="38" transform="rotate(-22 100 152)" />
+  <ellipse class="petal" cx="100" cy="82" rx="10" ry="38" />
+  <ellipse class="petal" cx="100" cy="82" rx="10" ry="38" transform="rotate(22 100 152)" />
+  <ellipse class="petal" cx="100" cy="82" rx="10" ry="38" transform="rotate(43 100 152)" />
+  <ellipse class="petal" cx="100" cy="82" rx="10" ry="38" transform="rotate(65 100 152)" />
+
+  <!-- Inner ring — 3 shorter petals -->
+  <ellipse class="petal" cx="100" cy="96" rx="7.5" ry="26" transform="rotate(-20 100 152)" />
+  <ellipse class="petal" cx="100" cy="96" rx="7.5" ry="26" />
+  <ellipse class="petal" cx="100" cy="96" rx="7.5" ry="26" transform="rotate(20 100 152)" />
+
+  <!-- Sepal cup — where flower meets hands -->
+  <path class="sketch" stroke-width="0.7"
+        d="M 84,149 Q 92,156 100,153 Q 108,156 116,149" />
+
+  <!-- ═══ HANDS ══════════════════════════════════════════════════════════ -->
+
+  <!-- LEFT HAND ── -->
+  <!-- Outer edge: wrist lower-left → palm → last fingertip -->
+  <path class="sketch" stroke-width="0.85"
+        d="M 13,263 C 17,240 25,214 38,192 C 49,173 63,158 77,149 C 86,143 93,140 100,138" />
+  <!-- Inner palm / thumb-side edge -->
+  <path class="sketch" stroke-width="0.72"
+        d="M 37,263 C 43,244 52,222 64,202 C 74,185 87,170 98,161" />
+  <!-- Thumb -->
+  <path class="sketch" stroke-width="0.62"
+        d="M 31,219 C 22,208 19,196 22,184 C 25,174 35,171 43,176" />
+  <!-- Ring/pinky finger suggestion -->
+  <path class="sketch" stroke-width="0.52"
+        d="M 61,165 C 56,152 56,137 61,125 C 64,116 72,113 77,117" />
+  <!-- Middle/index finger suggestion -->
+  <path class="sketch" stroke-width="0.52"
+        d="M 77,153 C 74,140 75,125 81,114 C 84,106 92,104 97,109" />
+
+  <!-- RIGHT HAND ── (mirror of left) -->
+  <!-- Outer edge -->
+  <path class="sketch" stroke-width="0.85"
+        d="M 187,263 C 183,240 175,214 162,192 C 151,173 137,158 123,149 C 114,143 107,140 100,138" />
+  <!-- Inner palm -->
+  <path class="sketch" stroke-width="0.72"
+        d="M 163,263 C 157,244 148,222 136,202 C 126,185 113,170 102,161" />
+  <!-- Thumb -->
+  <path class="sketch" stroke-width="0.62"
+        d="M 169,219 C 178,208 181,196 178,184 C 175,174 165,171 157,176" />
+  <!-- Ring/pinky finger suggestion -->
+  <path class="sketch" stroke-width="0.52"
+        d="M 139,165 C 144,152 144,137 139,125 C 136,116 128,113 123,117" />
+  <!-- Middle/index finger suggestion -->
+  <path class="sketch" stroke-width="0.52"
+        d="M 123,153 C 126,140 125,125 119,114 C 116,106 108,104 103,109" />
+
+  <!-- ═══ CHAKRA DOTS ════════════════════════════════════════════════════ -->
+  <!-- 7 dots centred at x=100, y from 22→190, spacing ≈ 28px           -->
+  <!-- Colors are muted versions of each chakra mapped to the site palette -->
+
+  <circle cx="100" cy="22"  r="8" fill="#a394b2" />  <!-- Crown       — dusty lavender    -->
+  <circle cx="100" cy="50"  r="8" fill="#7d8fa3" />  <!-- Third Eye   — muted slate blue  -->
+  <circle cx="100" cy="78"  r="8" fill="#8eb090" />  <!-- Throat      — sage-light        -->
+  <circle cx="100" cy="106" r="8" fill="#4f7556" />  <!-- Heart       — sage              -->
+  <circle cx="100" cy="134" r="8" fill="#c4a45a" />  <!-- Solar Plexus— muted amber       -->
+  <circle cx="100" cy="162" r="8" fill="#b9643f" />  <!-- Sacral      — clay              -->
+  <circle cx="100" cy="190" r="8" fill="#c96857" />  <!-- Root        — deep dusty rose   -->
+
+</svg>
