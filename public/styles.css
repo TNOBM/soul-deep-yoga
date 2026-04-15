@@ -474,18 +474,31 @@ footer .brand-footer {
     align-items: center;
 }
 
-@media (min-width: 768px) {
+.about-block > * {
+    min-width: 0;
+}
+
+@media (min-width: 640px) {
     .about-block {
-        grid-template-columns: 1fr 1.3fr;
+        /* Image column capped at 360px so it never dominates;
+           text column takes whatever space remains. */
+        grid-template-columns: minmax(240px, 360px) 1fr;
     }
 }
 
 .about-image {
     width: 100%;
+    max-width: 360px;
     height: auto;
     border-radius: 6px;
     box-shadow: 0 10px 30px rgba(74, 51, 37, 0.12);
     display: block;
+}
+
+@media (max-width: 639px) {
+    .about-image {
+        margin: 0 auto;
+    }
 }
 
 /* Contact form specifics */
