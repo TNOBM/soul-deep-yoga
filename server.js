@@ -22,7 +22,7 @@ const site = {
     // by Formspree. Set FORMSPREE_ID in the environment to override this.
     // Create a form at https://formspree.io and paste the ID (the part after /f/)
     // from the endpoint URL.
-    formspreeId: process.env.FORMSPREE_ID || 'YOUR_FORMSPREE_ID',
+    formspreeId: process.env.FORMSPREE_ID || 'xyklkdqz',
     nav: [
         { href: '/', label: 'Home', key: 'home' },
         { href: '/about', label: 'About', key: 'about' },
