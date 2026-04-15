@@ -18,6 +18,11 @@ const site = {
     brand: 'Soul Deep Yoga Therapy',
     tagline: 'Lisa Segar',
     email: 'souldeepmi@gmail.com',
+    // Formspree endpoint ID — form submissions are delivered to Lisa's email
+    // by Formspree. Set FORMSPREE_ID in the environment to override this.
+    // Create a form at https://formspree.io and paste the ID (the part after /f/)
+    // from the endpoint URL.
+    formspreeId: process.env.FORMSPREE_ID || 'YOUR_FORMSPREE_ID',
     nav: [
         { href: '/', label: 'Home', key: 'home' },
         { href: '/about', label: 'About', key: 'about' },
@@ -84,38 +89,11 @@ app.get('/contact', (req, res) => {
         pageDesc:
             'Reach out to Lisa Segar at Soul Deep Yoga Therapy to book a discovery call or ask a question.',
         active: 'contact',
-        success: req.query.success === '1',
     });
 });
 
-// Contact form handler
-app.post('/contact', (req, res) => {
-    const { name, email, interest, message } = req.body;
-
-    // Minimal validation
-    if (!name || !email) {
-        return res.status(400).render('contact', {
-            site,
-            pageTitle: 'Contact — Soul Deep Yoga Therapy',
-            pageDesc: 'Reach out to Lisa Segar.',
-            active: 'contact',
-            error: 'Please include your name and email so Lisa can reply.',
-            formValues: req.body,
-            success: false,
-        });
-    }
-
-    // Log the inquiry — in production this would send an email via SMTP or a service.
-    // For now we persist it to stdout so Lisa can still see it when reviewing logs.
-    console.log('\n— New Soul Deep inquiry —');
-    console.log('Name:     ', name);
-    console.log('Email:    ', email);
-    console.log('Interest: ', interest || '(none selected)');
-    console.log('Message:  ', message || '(no message)');
-    console.log('—\n');
-
-    res.redirect('/contact?success=1');
-});
+// Contact form submissions go directly to Formspree from the browser
+// (see views/contact.ejs). Nothing for Express to do here.
 
 // 404 handler
 app.use((req, res) => {

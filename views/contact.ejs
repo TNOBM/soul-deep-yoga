@@ -13,53 +13,94 @@
 <section>
     <div class="container">
         <div class="form-wrap">
-            <% if (typeof success !== 'undefined' && success) { %>
-                <div class="form-success">
-                    <div class="eyebrow-sm">Message Received</div>
-                    <h3>Thank you — your note is on its way.</h3>
-                    <p>I'll be in touch soon, with care and presence.</p>
-                    <a href="/" class="btn btn-outline">Return Home</a>
+            <div id="form-success" class="form-success" style="display:none;">
+                <div class="eyebrow-sm">Message Received</div>
+                <h3>Thank you — your note is on its way.</h3>
+                <p>I'll be in touch soon, with care and presence.</p>
+                <a href="/" class="btn btn-outline">Return Home</a>
+            </div>
+            <div id="form-error" class="form-error" style="display:none;"></div>
+            <form id="contact-form" method="POST" action="https://formspree.io/f/<%= site.formspreeId %>">
+                <div class="form-field">
+                    <label for="name">Your Name</label>
+                    <input id="name" name="name" type="text" required />
                 </div>
-            <% } else { %>
-                <% if (typeof error !== 'undefined' && error) { %>
-                    <div class="form-error"><%= error %></div>
-                <% } %>
-                <% const v = (typeof formValues !== 'undefined') ? formValues : {}; %>
-                <form method="POST" action="/contact">
-                    <div class="form-field">
-                        <label for="name">Your Name</label>
-                        <input id="name" name="name" type="text" value="<%= v.name || '' %>" required />
-                    </div>
-                    <div class="form-field">
-                        <label for="email">Email</label>
-                        <input id="email" name="email" type="email" value="<%= v.email || '' %>" required />
-                    </div>
-                    <div class="form-field">
-                        <label for="interest">What brings you here?</label>
-                        <select id="interest" name="interest">
-                            <% const options = [
-                                'A free discovery call',
-                                'Yoga Therapy Assessment',
-                                'Private Yoga (Deep Release, Rest, Breath)',
-                                'The Mushroom Circle — 10 Week Program',
-                                'Mushroom Circle waitlist',
-                                'A general question'
-                            ]; %>
-                            <% options.forEach(function(opt) { %>
-                                <option <%= v.interest === opt ? 'selected' : '' %>><%= opt %></option>
-                            <% }); %>
-                        </select>
-                    </div>
-                    <div class="form-field">
-                        <label for="message">A little about what you're moving through</label>
-                        <textarea id="message" name="message" placeholder="Share as much or as little as feels right…"><%= v.message || '' %></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            <% } %>
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required />
+                </div>
+                <div class="form-field">
+                    <label for="interest">What brings you here?</label>
+                    <select id="interest" name="interest">
+                        <% const options = [
+                            'A free discovery call',
+                            'Yoga Therapy Assessment',
+                            'Private Yoga (Deep Release, Rest, Breath)',
+                            'The Mushroom Circle — 10 Week Program',
+                            'Mushroom Circle waitlist',
+                            'A general question'
+                        ]; %>
+                        <% options.forEach(function(opt) { %>
+                            <option><%= opt %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="message">A little about what you're moving through</label>
+                    <textarea id="message" name="message" placeholder="Share as much or as little as feels right…"></textarea>
+                </div>
+                <!-- Formspree's spam honeypot: real users leave this blank. -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+                <button type="submit" class="btn">Send Message</button>
+            </form>
         </div>
     </div>
 </section>
+
+<script>
+    (function () {
+        var form = document.getElementById('contact-form');
+        var successEl = document.getElementById('form-success');
+        var errorEl = document.getElementById('form-error');
+        if (!form) return;
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            errorEl.style.display = 'none';
+
+            var btn = form.querySelector('button[type="submit"]');
+            var originalLabel = btn.textContent;
+            btn.textContent = 'Sending…';
+            btn.disabled = true;
+
+            fetch(form.action, {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(form),
+            })
+                .then(function (res) {
+                    if (res.ok) {
+                        form.style.display = 'none';
+                        successEl.style.display = 'block';
+                        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        return;
+                    }
+                    return res.json().then(function (data) {
+                        var msg =
+                            (data && data.errors && data.errors.map(function (err) { return err.message; }).join(', ')) ||
+                            'Something went wrong. Please try again, or email souldeepmi@gmail.com directly.';
+                        throw new Error(msg);
+                    });
+                })
+                .catch(function (err) {
+                    errorEl.textContent = err.message || 'Something went wrong. Please email souldeepmi@gmail.com directly.';
+                    errorEl.style.display = 'block';
+                    btn.textContent = originalLabel;
+                    btn.disabled = false;
+                });
+        });
+    })();
+</script>
 
 <section class="bg-sage">
     <div class="container narrow" style="text-align:center;">
