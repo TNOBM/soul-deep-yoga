@@ -12,14 +12,6 @@
                     </a>
                 </li>
             <% }); %>
-            <li>
-                <button class="theme-toggle" type="button" onclick="(function(){var order=['muted','vibrant','ember'];var h=document.documentElement;var cur=h.getAttribute('data-theme')||'muted';var next=order[(order.indexOf(cur)+1)%order.length];h.setAttribute('data-theme',next);try{localStorage.setItem('sd-theme',next);}catch(e){}})();" aria-label="Cycle color theme">
-                    <span class="dot" aria-hidden="true"></span>
-                    <span class="label-vibrant">Vibrant</span>
-                    <span class="label-ember">Ember</span>
-                    <span class="label-muted">Muted</span>
-                </button>
-            </li>
         </ul>
     </div>
 </nav>

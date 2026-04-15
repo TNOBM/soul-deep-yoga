@@ -1,26 +1,6 @@
 /* Soul Deep Yoga Therapy — Minimal, soulful */
 
-/* Muted theme (default) — soft, quiet, tonal */
-:root,
-[data-theme="muted"] {
-    --sage: #8a9a8b;
-    --sage-light: #c7d0c5;
-    --sage-pale: #e8ede6;
-    --cream: #f7f3ec;
-    --bone: #fbf9f4;
-    --clay: #b59784;
-    --clay-light: #e4d3c6;
-    --dusty-rose: #c9a8a0;
-    --mushroom: #a89585;
-    --earth: #7a6b5d;
-    --ink: #3a3832;
-    --muted: #6b665c;
-    --border: #e3ddd1;
-}
-
-/* Vibrant theme — same palette, turned up. Deeper greens, warmer
-   terracotta, richer cream — still earthy, but with more presence. */
-[data-theme="vibrant"] {
+:root {
     --sage: #4f7556;
     --sage-light: #8eb090;
     --sage-pale: #cfdfce;
@@ -34,96 +14,6 @@
     --ink: #2a1d14;
     --muted: #6d5642;
     --border: #dcc7a4;
-}
-
-/* Ember theme — dark mushroom cave. Warm candle-lit healing room:
-   deep earth backgrounds, glowing sage and terracotta accents,
-   cream text that feels like soft lamplight. */
-[data-theme="ember"] {
-    --sage: #a0bf9e;
-    --sage-light: #7a9a78;
-    --sage-pale: #2d3c31;
-    --cream: #282018;
-    --bone: #1e1811;
-    --clay: #d88c6a;
-    --clay-light: #3c2920;
-    --dusty-rose: #d99288;
-    --mushroom: #d0a98f;
-    --earth: #d4ad80;
-    --ink: #f0e0c6;
-    --muted: #b5a694;
-    --border: #3d3329;
-}
-
-/* Ember-specific overrides where a simple token swap isn't enough */
-[data-theme="ember"] body {
-    color: var(--ink);
-}
-
-[data-theme="ember"] p {
-    color: var(--muted);
-}
-
-[data-theme="ember"] .nav {
-    background: rgba(30, 24, 17, 0.9);
-}
-
-[data-theme="ember"] footer {
-    background: #0f0b06;
-}
-
-[data-theme="ember"] footer p {
-    color: var(--mushroom);
-}
-
-[data-theme="ember"] footer .brand-footer {
-    color: var(--earth);
-}
-
-[data-theme="ember"] .about-image {
-    color: var(--ink);
-}
-
-[data-theme="ember"] .card {
-    background: var(--cream);
-}
-
-[data-theme="ember"] .form-wrap,
-[data-theme="ember"] .form-field input,
-[data-theme="ember"] .form-field textarea,
-[data-theme="ember"] .form-field select {
-    background: var(--cream);
-    color: var(--ink);
-}
-
-[data-theme="ember"] .investment {
-    background: var(--cream);
-}
-
-[data-theme="ember"] .week {
-    background: var(--cream);
-}
-
-[data-theme="ember"] .btn {
-    color: var(--bone);
-}
-
-/* Smooth cross-theme transitions */
-body,
-.nav,
-section,
-.card,
-footer,
-.form-wrap,
-.week,
-.investment,
-.pull-quote,
-.contact-block,
-.page-intro,
-.hero,
-.about-image {
-    transition: background-color 0.4s ease, color 0.4s ease,
-                border-color 0.4s ease, background 0.4s ease;
 }
 
 * {
@@ -591,80 +481,14 @@ footer .brand-footer {
 }
 
 .about-image {
+    width: 100%;
+    height: auto;
     aspect-ratio: 4 / 5;
-    background: linear-gradient(135deg, var(--sage-light), var(--clay-light));
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--bone);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-style: italic;
-    font-size: 1.2rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-}
-
-/* Theme toggle */
-.theme-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.45rem 0.9rem;
-    border: 1px solid var(--border);
-    background: transparent;
-    border-radius: 999px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 400;
-    transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
-    margin-left: 0.5rem;
-}
-
-.theme-toggle:hover {
-    border-color: var(--sage);
-    color: var(--earth);
-}
-
-.theme-toggle .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--sage), var(--clay));
-    display: inline-block;
-}
-
-[data-theme="vibrant"] .theme-toggle .dot {
-    background: linear-gradient(135deg, var(--clay), var(--sage));
-}
-
-[data-theme="ember"] .theme-toggle .dot {
-    background: radial-gradient(circle at 30% 30%, var(--clay), var(--mushroom));
-    box-shadow: 0 0 8px rgba(216, 140, 106, 0.4);
-}
-
-.theme-toggle .label-muted,
-.theme-toggle .label-vibrant,
-.theme-toggle .label-ember {
-    display: none;
-}
-
-/* Each theme shows the NEXT theme's name as the toggle label */
-:root:not([data-theme]) .theme-toggle .label-vibrant,
-[data-theme="muted"] .theme-toggle .label-vibrant {
-    display: inline;
-}
-
-[data-theme="vibrant"] .theme-toggle .label-ember {
-    display: inline;
-}
-
-[data-theme="ember"] .theme-toggle .label-muted {
-    display: inline;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(74, 51, 37, 0.12);
+    display: block;
 }
 
 /* Contact form specifics */
