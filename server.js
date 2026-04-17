@@ -69,7 +69,7 @@ app.get('/mushroom-circle', (req, res) => {
     render(res, 'mushroom-circle', {
         pageTitle: 'The Mushroom Circle — Soul Deep Yoga Therapy',
         pageDesc:
-            'A 10-week private healing program for women blending microdosing integration with mindfulness and somatic support.',
+            'A 6-week private healing program for women blending microdosing integration with mindfulness and somatic support.',
         active: 'mushroom',
     });
 });
